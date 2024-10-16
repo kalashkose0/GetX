@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx/counterController.dart';
 
 class counterApp extends StatelessWidget {
-  final GetxController counter = Get.put(CounterController());
+  final CounterController counter = Get.put(CounterController());
 
   @override
   Widget build(BuildContext context) {
