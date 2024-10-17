@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:getx/database/dbhelper.dart';
-import 'package:getx/models/notesmodel.dart';
-import 'package:getx/controllers/counterController.dart';
+
+import '../Models/notesmodel.dart';
 
 class DbHelperController extends GetxController {
   final DbHelper dbHelper = Get.put(DbHelper());
@@ -12,7 +12,7 @@ class DbHelperController extends GetxController {
   }
 
   Future<void> fetchNotes() async {
-    await dbHelper.getNotes();
+    await dbHelper.initDb();
     notes.assignAll(await dbHelper.getNotes());
   }
 }

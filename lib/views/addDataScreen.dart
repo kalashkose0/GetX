@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/controllers/dbHelperController.dart';
-import 'package:getx/models/notesmodel.dart';
 import 'package:getx/views/widgets/uihelper.dart';
+import 'dart:developer';
+import '../Models/notesmodel.dart';
 
 class AddDataScreen extends StatelessWidget {
   TextEditingController titlecontroller = TextEditingController();
@@ -30,7 +31,12 @@ class AddDataScreen extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          ElevatedButton(onPressed: () {}, child: Text("Add Data"))
+          ElevatedButton(
+              onPressed: () {
+                addData(titlecontroller.text.toString(),
+                    desccontroller.text.toString(), context);
+              },
+              child: Text("Add Data"))
         ],
       ),
     );
@@ -43,7 +49,8 @@ class AddDataScreen extends StatelessWidget {
     } else {
       final newnote = NotesModel(title: title, desc: desc);
       dbHelperController.addNotes(newnote);
-      Get.back();
+      // Get.back();
+      log("Data Inserted");
     }
   }
 }
